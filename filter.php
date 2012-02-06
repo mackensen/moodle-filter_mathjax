@@ -36,8 +36,9 @@ class filter_mathjax extends moodle_text_filter {
         //   inline: \( ... \)
         //   block: $$ ... $$, \[ ... \]
         //   tex environments: \begin{...} ... \end{...}
+        //   mathml: <math> ... </math>
         
-        if (preg_match('/\$\$.+?\$\$|\\\\\\[.+?\\\\\\]|\\\\\\(.+?\\\\\\)|\\\\begin\\{/s', $text)) {
+        if (preg_match('/\$\$.+?\$\$|\\\\\\[.+?\\\\\\]|\\\\\\(.+?\\\\\\)|\\\\begin\\{|<math/s', $text)) {
             return '<div class="filter-mathjax">'.$text.'</div>';
         }
         return $text;
