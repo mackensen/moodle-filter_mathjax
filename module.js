@@ -5,7 +5,7 @@ M.filter_mathjax = {
             skipStartupTypeset: true,
             root: mathjaxroot
         });
-        if (nodes) {
+        if (!nodes.isEmpty()) {
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, nodes.getDOMNodes(), function() {}]);
         }
         MathJax.Hub.Configured();
