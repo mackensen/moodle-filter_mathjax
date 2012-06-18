@@ -11,12 +11,21 @@ class filter_mathjax extends moodle_text_filter {
                 file_exists($CFG->dirroot . '/filter/mathjax/js/config') &&
                 file_exists($CFG->dirroot . '/filter/mathjax/js/jax') &&
                 file_exists($CFG->dirroot . '/filter/mathjax/js/fonts') &&
+                file_exists($CFG->dirroot . '/filter/mathjax/js/images') &&
                 file_exists($CFG->dirroot . '/filter/mathjax/js/extensions')) {
                 $mathjaxpath = '/filter/mathjax/js';
             } else if (substr($PAGE->url, 0, 6) === 'https:') {
-                $mathjaxpath = 'https://d3eoax9i5htok0.cloudfront.net/mathjax/latest';
+                if (!empty($CFG->filter_mathjax_distroothttps)) {
+                    $mathjaxpath = $CFG->filter_mathjax_distroothttps;
+                } else {
+                    $mathjaxpath = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest';
+                }
             } else {
-                $mathjaxpath = 'http://cdn.mathjax.org/mathjax/latest';
+                if (!empty($CFG->filter_mathjax_distroothttp)) {
+                    $mathjaxpath = $CFG->filter_mathjax_distroothttp;
+                } else {
+                    $mathjaxpath = 'http://cdn.mathjax.org/mathjax/latest';
+                }
             }
             
             $url = new moodle_url($mathjaxpath . '/MathJax.js',
