@@ -35,7 +35,7 @@ class filter_mathjax extends moodle_text_filter {
             if (!empty($CFG->filter_mathjax_distroothttps)) {
                 $path = $CFG->filter_mathjax_distroothttps;
             } else {
-                $path = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest';
+                $path = 'https://cdn.mathjax.org/mathjax/latest';
             }
         }
 
